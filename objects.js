@@ -86,11 +86,10 @@ for (catOwners in cats_and_owners){
 Source http://api.nobelprize.org/v1/prize.json?year=2017
 * */
 
-// TODO print the full name of the Literature Nobel laureate.
-// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
-// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
-// TODO write code to print the total number of prize categories
-// TODO write code to count the total number of laureates from 2017. 
+
+
+
+
 //   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
 
 
@@ -219,8 +218,36 @@ let nobel_prize_winners_2017 = {
   ]
 };
 
-let x = nobel_prize_winners_2017.prizes[3].laureates[0]
-let j = x.firstname
-let p = x.surname
+// TODO print the full name of the Literature Nobel laureate.
 
-console.log(j, p)
+
+console.log(nobel_prize_winners_2017.prizes[3].laureates[0].firstname + " " + nobel_prize_winners_2017.prizes[3].laureates[0].surname)
+
+// console.log(j, p)
+
+// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
+let pnl = nobel_prize_winners_2017.prizes[0].laureates
+pnl.forEach(function(i) {
+  console.log(i.id)
+})
+
+// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
+// Creating an empty list to be added to later
+count = [];
+nobel_prize_winners_2017.prizes.forEach(function(prizes){
+    count.push(prizes.category)  // Pushing whhat is found to the empty list
+})
+console.log(count);
+
+// TODO write code to print the total number of prize categories
+// Getting the length
+console.log(count.length)
+
+// TODO write code to count the total number of laureates from 2017. 
+// Creatinga counter and incrementing it everytime it loops through as it finds a laureate
+let laureatesCount = 0
+nobel_prize_winners_2017.prizes.forEach(function(prize) {
+    prize.laureates.forEach(function(winner){
+      laureatesCount++
+    })
+})
